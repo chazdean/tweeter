@@ -10,7 +10,7 @@ nav {
   background-color: #4056A1;
 }
 
-.nav_title {
+.nav-title {
   display: flex;
   align-items: flex-end;
   font-family: 'Bungee';
@@ -19,7 +19,7 @@ nav {
   font-size: 40px;
 }
 
-.nav_phrase {
+.nav-phrase {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,11 +31,11 @@ nav {
   font-size: 22px;
 }
 
-.fas {
+.fa-angle-double-down {
   color: rgb(187, 38, 38);
 }
 
-.down_arrow {
+.down-arrow {
   display: flex;
   justify-content: center;
 }
