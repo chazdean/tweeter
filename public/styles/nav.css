@@ -2,11 +2,12 @@
 
 nav {
   display: flex;
-  position: absolute;
+  position: fixed;
   justify-content: space-between;
   color:white;
   height: 120px;
   width: 100%;
+  top: 0;
   background-color: #4056A1;
 }
 
