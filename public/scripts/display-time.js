@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-const d = timeago.format(new Date());
-const tweetPostDate = document.getElementById("tweet-date").innerHTML = d;
+  $('.tweet-date').text((index, text) => {
+    console.log(text);
+    return timeago.format(text);
+  });
 
 });
