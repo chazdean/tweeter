@@ -6,31 +6,6 @@
 
 $(document).ready(function() {
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-
   const createTweetElement = (tweetObject) => {
     const $test = $(`
   <article class="tweet">
@@ -49,7 +24,7 @@ $(document).ready(function() {
   <footer>
     <div class="footer-utility">
       <div>
-        <span class="tweet-date">${tweetObject.created_at}</span>
+        <span class="tweet-date">${timeago.format(tweetObject.created_at)}</span>
       </div>
       <div class="footer-icons">
         <div>
@@ -77,12 +52,6 @@ $(document).ready(function() {
     });
   };
 
-  renderTweets(data);
-
-  $('.tweet-date').text((index, text) => {
-    return timeago.format(text);
-  }); 
-
   $("form").submit(function(event) {
     event.preventDefault();
 
@@ -95,8 +64,19 @@ $(document).ready(function() {
     }).then((response) => {
       console.log(response);
     });
-
-
   });
 
+  const loadTweets = () => {
+    
+    $.ajax({
+      url: "/tweets",
+      type: "GET",
+      dataType: "json",
+    }).then((response) => {
+      renderTweets(response);
+    });
+  };
+
+  loadTweets();
+  
 });
