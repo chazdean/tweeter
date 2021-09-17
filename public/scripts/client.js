@@ -7,7 +7,7 @@
 $(document).ready(function() {
 
   const createTweetElement = (tweetObject) => {
-    const $test = $(`
+    const $tweetArticle = $(`
   <article class="tweet">
   <header>
       <div class="user-badge">
@@ -18,7 +18,7 @@ $(document).ready(function() {
   </header>
   <main>
     <div class="user-content">
-      <p>${tweetObject.content.text}</p>
+      <p class="user-input"></p>
     </div>
   </main>
   <footer>
@@ -41,14 +41,15 @@ $(document).ready(function() {
   </footer>
 </article>
     `);
-
-    return $test;
+    
+    $tweetArticle.find(".user-input").text(tweetObject.content.text);
+    return $tweetArticle;
   };
 
   const renderTweets = (tweetData) => {
     tweetData.forEach(tweet => {
       const $newTweet = createTweetElement(tweet);
-      $('.tweet-container').append($newTweet);
+      $('.tweet-container').prepend($newTweet);
     });
   };
 
@@ -80,7 +81,6 @@ $(document).ready(function() {
     });
 
     textArea.val("");
-
   });
 
   const loadTweets = () => {
@@ -95,5 +95,4 @@ $(document).ready(function() {
   };
 
   loadTweets();
-
 });
