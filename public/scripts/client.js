@@ -60,6 +60,15 @@ $(document).ready(function() {
     });
   };
 
+  const showError = (text) => {
+    $( ".error-msg" ).text(text);
+    $( ".error-box" ).slideDown( "slow" );
+  }
+
+  const hideError = () => {
+    $( ".error-box" ).slideUp();
+  };
+
   $("form").submit(function(event) {
     event.preventDefault();
 
@@ -67,9 +76,9 @@ $(document).ready(function() {
     const textArea = $(this).find(".tweet-text");
 
     if (textArea.val() === "") {
-      return alert("Cannot submit empty field");
+      return showError("Cannot submit empty field");
     } else if (textArea.val().length >= 140) {
-      return alert("Too many characters!");
+      return showError("Too many characters! #relax");
     }
 
     $.ajax({
@@ -80,6 +89,7 @@ $(document).ready(function() {
       postTweet();
     });
 
+    hideError();
     textArea.val("");
   });
 
