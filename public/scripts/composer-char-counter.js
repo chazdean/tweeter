@@ -1,8 +1,8 @@
 $(document).ready(function() {
   
-  const textArea = document.getElementById("tweet-text");
+  const textArea = $(".tweet-text");
 
-  textArea.addEventListener("input", function() {
+  textArea.on("input", function() {
     let inputValue = $(this).val().length;
     let counter = $(this).siblings(".tweet-extras").contents(".counter");
   
