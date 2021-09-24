@@ -1,8 +1,4 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+// Timeago library used to format date
 
 $(document).ready(function() {
 
@@ -27,13 +23,8 @@ $(document).ready(function() {
         <span class="tweet-date">${timeago.format(tweetObject.created_at)}</span>
       </div>
       <div class="footer-icons">
-        <div>
           <i class="fas fa-flag icon"></i>
-        </div>
-        <div>
           <i class="fas fa-retweet icon"></i>
-        </div>
-        <div>
           <i class="fas fa-heart icon"></i>
         </div>
       </div>
@@ -42,6 +33,7 @@ $(document).ready(function() {
 </article>
     `);
     
+    //Adding user input text via .text to prevent XXS
     $tweetArticle.find(".user-input").text(tweetObject.content.text);
     return $tweetArticle;
   };
@@ -60,13 +52,14 @@ $(document).ready(function() {
     });
   };
 
+  //Helper Functions to assist with error msg animation
   const showError = (text) => {
-    $( ".error-msg" ).text(text);
-    $( ".error-box" ).slideDown( "slow" );
-  }
+    $(".error-msg").text(text);
+    $(".error-box").slideDown("slow");
+  };
 
   const hideError = () => {
-    $( ".error-box" ).slideUp();
+    $(".error-box").slideUp();
   };
 
   $("form").submit(function(event) {
@@ -75,12 +68,14 @@ $(document).ready(function() {
     const form = $(this);
     const textArea = $(this).find(".tweet-text");
 
+    //Form validation requirements
     if (textArea.val() === "") {
       return showError("Cannot submit empty field");
-    } else if (textArea.val().length >= 140) {
+    } else if (textArea.val().length > 140) {
       return showError("Too many characters! #relax");
     }
 
+    //Sends serialized input user data to the server
     $.ajax({
       url: "/tweets",
       type: "POST",
@@ -92,7 +87,8 @@ $(document).ready(function() {
     hideError();
     textArea.val("");
   });
-
+    
+  //Fetches tweet data from server and renders page
   const loadTweets = () => {
     
     $.ajax({

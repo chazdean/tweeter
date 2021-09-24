@@ -1,3 +1,5 @@
+/* CSS for all elements within the tweet container */
+
 .tweet-container {
   display: flex;
   flex-direction: column;

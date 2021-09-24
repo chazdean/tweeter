@@ -1,6 +1,6 @@
-/* nav, header, container, body */
+/* CSS for Desktop and Tablet Layouts */
 
-  /* Another smartphone breakpoint is maximum width of around 420px */
+  /* Tablet: minimum width of 768px to maximum width of 1024px */
   @media only screen and (min-width: 768px) and  (max-width: 1024px){
     nav {
       background-color: #c48704d2;
@@ -17,17 +17,19 @@
     body {
       flex-direction: row;
       justify-content: space-between;
+      align-items: unset;
     }
     .page-header {
       padding-top: 40px;
-      margin-left: 50px;
+      margin: 200px 180px 0px 50px;
       height: 350px;
-      width: 30%;
+      max-width: 430px;
+      top: 0;
     }
     .container {
       padding-top: 200px;
-      width: 60%;
       padding-right: 50px;
+      width: 60%;
     }
   }
 

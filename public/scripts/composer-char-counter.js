@@ -1,3 +1,4 @@
+//Counter function that determines tweet text area length
 $(document).ready(function() {
   
   const textArea = $(".tweet-text");
